@@ -1,3 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0A192F;
+  color: #E6F1FF;
+}
+
+a {
+  color: #00BFFF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00FFFF;
+}
+
+button {
+  cursor: pointer;
+  background-color: #00BFFF;
+  color: #0A192F;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #00FFFF;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+}
+
 .App {
   text-align: center;
 }
