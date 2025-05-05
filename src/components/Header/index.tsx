@@ -9,8 +9,8 @@ const HeaderContainer = styled.header`
 
 const Title = styled.h1`
   font-size: 2.5rem;
-  color: #00BFFF;
-  text-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF;
+  color: ${props => props.theme.primary};
+  text-shadow: 0 0 10px ${props => props.theme.primary}, 0 0 20px ${props => props.theme.primary};
   margin: 0;
 `;
 
@@ -19,15 +19,15 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled(Link)`
-  color: #FFFFFF;
+  color: ${props => props.theme.text};
   text-decoration: none;
   margin-right: 1.5rem;
   font-size: 1.2rem;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #00BFFF;
-    text-shadow: 0 0 10px #00BFFF;
+    color: ${props => props.theme.primary};
+    text-shadow: 0 0 10px ${props => props.theme.primary};
   }
 `;
 

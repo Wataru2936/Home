@@ -17,8 +17,8 @@ const Logo = styled(motion.img)`
 
 const CatchPhrase = styled(motion.h2)`
   font-size: 2.5rem;
-  color: #00BFFF;
-  text-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF;
+  color: ${props => props.theme.primary};
+  text-shadow: 0 0 10px ${props => props.theme.primary}, 0 0 20px ${props => props.theme.primary};
   margin-bottom: 2rem;
   font-weight: bold;
 `;
@@ -28,7 +28,7 @@ const Description = styled(motion.p)`
   line-height: 1.8;
   max-width: 800px;
   margin: 0 auto;
-  color: #E6F1FF;
+  color: ${props => props.theme.text};
 `;
 
 const Home: React.FC = () => {
