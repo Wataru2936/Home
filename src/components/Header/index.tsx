@@ -32,9 +32,15 @@ const NavLink = styled(Link)`
 `;
 
 const Header: React.FC = () => {
+  const handleTitleClick = () => {
+    // 親コンポーネントにイベントを伝播させる
+    const event = new CustomEvent('showFireworks');
+    window.dispatchEvent(event);
+  };
+
   return (
     <HeaderContainer>
-      <Title>白石亘のホームページ</Title>
+      <Title onClick={handleTitleClick} style={{ cursor: 'pointer' }}>白石亘のホームページ</Title>
       <Nav>
         <NavLink to="/">トップ</NavLink>
         <NavLink to="/works">アプリ紹介</NavLink>
