@@ -69,7 +69,7 @@ const Header: React.FC = () => {
         whileTap={{ scale: 0.95 }}
       >
         <Icon>🚀</Icon>
-        白石亘のホームページ
+        白石亘のポートフォリオ
       </Title>
       <Nav>
         <NavButton 
