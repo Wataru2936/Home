@@ -134,7 +134,7 @@ const Header: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Icon><FaRocket /></Icon>
+          <Icon>{React.createElement(FaRocket)}</Icon>
           白石亘のポートフォリオ
         </Title>
         <Nav>
@@ -143,7 +143,7 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon><FaHome /></Icon>
+            <Icon>{React.createElement(FaHome)}</Icon>
             トップ
           </NavButton>
           <NavButton 
@@ -151,7 +151,7 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon><FaLaptopCode /></Icon>
+            <Icon>{React.createElement(FaLaptopCode)}</Icon>
             アプリ紹介
           </NavButton>
           <NavButton 
@@ -159,52 +159,50 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon><FaUser /></Icon>
+            <Icon>{React.createElement(FaUser)}</Icon>
             プロフィール
           </NavButton>
         </Nav>
         <MobileMenuButton onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? <HiX /> : <HiMenu />}
+          {isMobileMenuOpen ? React.createElement(HiX) : React.createElement(HiMenu)}
         </MobileMenuButton>
       </HeaderContent>
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <MobileNav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
+      {isMobileMenuOpen && (
+        <MobileNav
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+        >
+          <NavButton 
+            to="/"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            <NavButton 
-              to="/"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <Icon><FaHome /></Icon>
-              トップ
-            </NavButton>
-            <NavButton 
-              to="/works"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <Icon><FaLaptopCode /></Icon>
-              アプリ紹介
-            </NavButton>
-            <NavButton 
-              to="/about"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <Icon><FaUser /></Icon>
-              プロフィール
-            </NavButton>
-          </MobileNav>
-        )}
-      </AnimatePresence>
+            <Icon>{React.createElement(FaHome)}</Icon>
+            トップ
+          </NavButton>
+          <NavButton 
+            to="/works"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <Icon>{React.createElement(FaLaptopCode)}</Icon>
+            アプリ紹介
+          </NavButton>
+          <NavButton 
+            to="/about"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <Icon>{React.createElement(FaUser)}</Icon>
+            プロフィール
+          </NavButton>
+        </MobileNav>
+      )}
     </HeaderContainer>
   );
 };

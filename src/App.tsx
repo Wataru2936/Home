@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
 import Header from './components/Header';
@@ -77,21 +77,19 @@ function App() {
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-    <Router>
       <AppContainer>
-          <ThemeToggle onClick={toggleTheme}>
-            {isDarkMode ? '🌞 ライトモード' : '🌙 ダークモード'}
-          </ThemeToggle>
+        <ThemeToggle onClick={toggleTheme}>
+          {isDarkMode ? '🌞 ライトモード' : '🌙 ダークモード'}
+        </ThemeToggle>
         <MainContent>
           <Header />
           <Routes>
-              <Route path="*" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/works" element={<Works />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </MainContent>
       </AppContainer>
-    </Router>
     </ThemeProvider>
   );
 }
