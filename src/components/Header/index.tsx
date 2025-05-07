@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { FaRocket, FaHome, FaLaptopCode, FaUser } from 'react-icons/fa';
 import { HiMenu, HiX } from 'react-icons/hi';
+import type { IconType } from 'react-icons';
 
 const HeaderContainer = styled.header`
   padding: 1rem 2rem;
@@ -113,6 +114,11 @@ const Icon = styled.span`
   align-items: center;
 `;
 
+const IconComponent = ({ icon: Icon, size = 24 }: { icon: IconType; size?: number }) => {
+  const IconElement = Icon as React.ComponentType<{ size?: number }>;
+  return <IconElement size={size} />;
+};
+
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -134,7 +140,7 @@ const Header: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Icon><FaRocket size={24} /></Icon>
+          <Icon><IconComponent icon={FaRocket} /></Icon>
           白石亘のポートフォリオ
         </Title>
         <Nav>
@@ -143,7 +149,7 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon><FaHome size={24} /></Icon>
+            <Icon><IconComponent icon={FaHome} /></Icon>
             トップ
           </NavButton>
           <NavButton 
@@ -151,7 +157,7 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon><FaLaptopCode size={24} /></Icon>
+            <Icon><IconComponent icon={FaLaptopCode} /></Icon>
             アプリ紹介
           </NavButton>
           <NavButton 
@@ -159,14 +165,14 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon><FaUser size={24} /></Icon>
+            <Icon><IconComponent icon={FaUser} /></Icon>
             プロフィール
           </NavButton>
         </Nav>
         <MobileMenuButton onClick={toggleMobileMenu}>
           {isMobileMenuOpen 
-            ? <HiX size={24} />
-            : <HiMenu size={24} />
+            ? <IconComponent icon={HiX} />
+            : <IconComponent icon={HiMenu} />
           }
         </MobileMenuButton>
       </HeaderContent>
@@ -183,7 +189,7 @@ const Header: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <Icon><FaHome size={24} /></Icon>
+            <Icon><IconComponent icon={FaHome} /></Icon>
             トップ
           </NavButton>
           <NavButton 
@@ -192,7 +198,7 @@ const Header: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <Icon><FaLaptopCode size={24} /></Icon>
+            <Icon><IconComponent icon={FaLaptopCode} /></Icon>
             アプリ紹介
           </NavButton>
           <NavButton 
@@ -201,7 +207,7 @@ const Header: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <Icon><FaUser size={24} /></Icon>
+            <Icon><IconComponent icon={FaUser} /></Icon>
             プロフィール
           </NavButton>
         </MobileNav>
