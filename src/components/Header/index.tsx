@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaRocket, FaHome, FaLaptopCode, FaUser } from 'react-icons/fa';
 import { HiMenu, HiX } from 'react-icons/hi';
 
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Icon>{React.createElement(FaRocket)}</Icon>
+          <Icon><FaRocket size={24} /></Icon>
           白石亘のポートフォリオ
         </Title>
         <Nav>
@@ -143,7 +143,7 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon>{React.createElement(FaHome)}</Icon>
+            <Icon><FaHome size={24} /></Icon>
             トップ
           </NavButton>
           <NavButton 
@@ -151,7 +151,7 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon>{React.createElement(FaLaptopCode)}</Icon>
+            <Icon><FaLaptopCode size={24} /></Icon>
             アプリ紹介
           </NavButton>
           <NavButton 
@@ -159,12 +159,15 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Icon>{React.createElement(FaUser)}</Icon>
+            <Icon><FaUser size={24} /></Icon>
             プロフィール
           </NavButton>
         </Nav>
         <MobileMenuButton onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? React.createElement(HiX) : React.createElement(HiMenu)}
+          {isMobileMenuOpen 
+            ? <HiX size={24} />
+            : <HiMenu size={24} />
+          }
         </MobileMenuButton>
       </HeaderContent>
       {isMobileMenuOpen && (
@@ -180,7 +183,7 @@ const Header: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <Icon>{React.createElement(FaHome)}</Icon>
+            <Icon><FaHome size={24} /></Icon>
             トップ
           </NavButton>
           <NavButton 
@@ -189,7 +192,7 @@ const Header: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <Icon>{React.createElement(FaLaptopCode)}</Icon>
+            <Icon><FaLaptopCode size={24} /></Icon>
             アプリ紹介
           </NavButton>
           <NavButton 
@@ -198,7 +201,7 @@ const Header: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <Icon>{React.createElement(FaUser)}</Icon>
+            <Icon><FaUser size={24} /></Icon>
             プロフィール
           </NavButton>
         </MobileNav>
