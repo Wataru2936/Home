@@ -82,7 +82,7 @@ function App() {
           {isDarkMode ? '🌞 ライトモード' : '🌙 ダークモード'}
         </ThemeToggle>
         <MainContent>
-          <Header />
+          <Header isDarkMode={isDarkMode} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/works" element={<Works />} />

@@ -63,19 +63,22 @@ const MobileMenuButton = styled.button`
   }
 `;
 
-const MobileNav = styled(motion.nav)`
+const MobileNav = styled(motion.nav)<{ isdark: boolean }>`
   display: none;
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  width: 100vw;
+  height: 100vh;
+  background: ${({ isdark }) => isdark ? '#0a0a23' : 'rgba(255, 255, 255, 0.98)'};
   backdrop-filter: blur(10px);
   border-radius: 0 0 15px 15px;
   padding: 1rem;
   flex-direction: column;
   gap: 1rem;
-  z-index: 1000;
+  z-index: 2000;
+  pointer-events: auto;
 
   @media (max-width: 768px) {
     display: flex;
@@ -119,7 +122,11 @@ const IconComponent = ({ icon: Icon, size = 24 }: { icon: IconType; size?: numbe
   return <IconElement size={size} />;
 };
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  isDarkMode: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ isDarkMode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleTitleClick = () => {
@@ -178,6 +185,7 @@ const Header: React.FC = () => {
       </HeaderContent>
       {isMobileMenuOpen && (
         <MobileNav
+          isdark={isDarkMode}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
