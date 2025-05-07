@@ -77,21 +77,21 @@ function App() {
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <Router>
-        <AppContainer>
+    <Router>
+      <AppContainer>
           <ThemeToggle onClick={toggleTheme}>
             {isDarkMode ? '🌞 ライトモード' : '🌙 ダークモード'}
           </ThemeToggle>
-          <MainContent>
-            <Header />
-            <Routes>
+        <MainContent>
+          <Header />
+          <Routes>
               <Route path="*" element={<Home />} />
-              <Route path="/works" element={<Works />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </MainContent>
-        </AppContainer>
-      </Router>
+            <Route path="/works" element={<Works />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </MainContent>
+      </AppContainer>
+    </Router>
     </ThemeProvider>
   );
 }
