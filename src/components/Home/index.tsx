@@ -55,8 +55,8 @@ const Home: React.FC = () => {
     <HomeContainer>
       {showFireworks && <Fireworks />}
       <Logo
-        src={process.env.PUBLIC_URL + '/wavex.png'}
-        alt="WAVEXロゴ"
+        src={process.env.PUBLIC_URL + '/Wapeta.png'}
+        alt="Wapetaロゴ"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
@@ -79,7 +79,7 @@ const Home: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        こんにちは！WAVEX1231-の白石亘です。
+        こんにちは！Wapetaの白石亘です。
         <br />
         このサイトでは、私が作成したWebアプリケーションを紹介しています。
         <br />
