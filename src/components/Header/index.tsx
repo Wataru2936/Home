@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
@@ -128,10 +128,16 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ isDarkMode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleTitleClick = () => {
-    const event = new CustomEvent('showFireworks');
-    window.dispatchEvent(event);
+    // 音声の再生
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(error => {
+        console.error('音声の再生に失敗しました:', error);
+      });
+    }
   };
 
   const toggleMobileMenu = () => {
@@ -140,6 +146,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode }) => {
 
   return (
     <HeaderContainer>
+      <audio ref={audioRef} src="/Radio.wav" preload="auto" />
       <HeaderContent>
         <Title 
           onClick={handleTitleClick} 

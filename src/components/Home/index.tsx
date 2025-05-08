@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import Fireworks from '../../components/Fireworks';
 
 const HomeContainer = styled.div`
   text-align: center;
@@ -13,6 +12,11 @@ const Logo = styled(motion.img)`
   height: auto;
   margin-bottom: 2rem;
   filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.5));
+  cursor: pointer;
+`;
+
+const AudioPlayer = styled.audio`
+  display: none;
 `;
 
 const CatchPhrase = styled(motion.h2)`
@@ -32,47 +36,40 @@ const Description = styled(motion.p)`
 `;
 
 const Home: React.FC = () => {
-  const [showFireworks, setShowFireworks] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
-    // 初回表示時に花火を表示
-    setShowFireworks(true);
-    const timer = setTimeout(() => setShowFireworks(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const handleShowFireworks = () => {
-      setShowFireworks(true);
-      setTimeout(() => setShowFireworks(false), 3000);
-    };
-
-    window.addEventListener('showFireworks', handleShowFireworks);
-    return () => window.removeEventListener('showFireworks', handleShowFireworks);
-  }, []);
+  const handleLogoClick = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(error => {
+        console.error('音声の再生に失敗しました:', error);
+      });
+    }
+  };
 
   return (
     <HomeContainer>
-      {showFireworks && <Fireworks />}
+      <AudioPlayer 
+        ref={audioRef} 
+        src={`${process.env.PUBLIC_URL}/Radio.wav`} 
+        preload="auto" 
+      />
       <Logo
         src={process.env.PUBLIC_URL + '/Wapeta.png'}
         alt="Wapetaロゴ"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
-        onClick={() => {
-          setShowFireworks(true);
-          setTimeout(() => setShowFireworks(false), 3000);
-        }}
-        style={{ cursor: 'pointer' }}
+        onClick={handleLogoClick}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       />
       <CatchPhrase
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-      
-      未来のWeb開発者への第一歩
+        未来のWeb開発者への第一歩
       </CatchPhrase>
       <Description
         initial={{ opacity: 0, y: 20 }}
